@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../components/today_info.dart';
@@ -67,7 +68,10 @@ class Controller extends GetxController {
   void initHourlyListScrollController() {
     DateTime firstHourInList = DateTime.fromMillisecondsSinceEpoch(weather.value.hourly.first.dt * 1000);
     int difference = currentHour.value.difference(firstHourInList).inHours;
-    currentHourPostionInList = 100 * (difference.abs());
+    log('first: ${firstHourInList.hour}');
+    log('now: ${currentHour.value.hour}');
+    log('difference: $difference ');
+    currentHourPostionInList = 97.w.round() * difference;
 
     hourlyListController = ScrollController(
       initialScrollOffset: currentHourPostionInList.toDouble(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 // ignore: unused_import
@@ -21,10 +22,19 @@ class WeatherApp extends StatelessWidget {
         statusBarIconBrightness: Brightness.dark,
       ),
     );
-    return const GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Weather App',
-      home: HomeScreen(),
+    
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      builder: (context, child) => const GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Weather App',
+        home: HomeScreen(),
+      ),
     );
   }
 }

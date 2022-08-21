@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp_starter_project/theme/colors.dart';
-import 'package:weatherapp_starter_project/theme/styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../theme/colors.dart';
+import '../theme/styles.dart';
 
 class HourInfo extends StatelessWidget {
   const HourInfo({
@@ -19,11 +21,11 @@ class HourInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160,
-      width: 100,
+      height: 160.h,
+      width: 97.w,
       decoration: BoxDecoration(
         color: isNow ? lightBlue : null,
-        borderRadius: isNow ? BorderRadius.circular(15) : null,
+        borderRadius: isNow ? BorderRadius.circular(15.r) : null,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -36,8 +38,8 @@ class HourInfo extends StatelessWidget {
           ),
           Image.asset(
             weatherIcon,
-            width: 40,
-            height: 40,
+            width: 40.w,
+            height: 40.h,
           ),
           Text(
             tempreture,

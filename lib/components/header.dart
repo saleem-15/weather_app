@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
-import 'package:weatherapp_starter_project/controllers/controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../controllers/controller.dart';
 import '../theme/colors.dart';
 import '../theme/styles.dart';
 
@@ -14,12 +15,13 @@ class Header extends GetView<Controller> {
     final Rx<String> city = controller.cityName;
     final String currentDate = intl.DateFormat('MMM d, yyyy')
         .format(DateTime.fromMillisecondsSinceEpoch(controller.weather.value.current.dt * 1000));
-    final degree = controller.weather.value.current.temp.round();
-    final icon = controller.weather.value.current.icon.toString();
+    final current = controller.weather.value.current;
+    final degree = current.temp.round();
+    final icon = current.icon.toString();
 
-    final String windSpeed = controller.weather.value.current.windSpeed.toString();
-    final String clouds = controller.weather.value.current.clouds.toString();
-    final String humidity = controller.weather.value.current.humidity.toString();
+    final String windSpeed = current.windSpeed.toString();
+    final String clouds = current.clouds.toString();
+    final String humidity = current.humidity.toString();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,29 +33,29 @@ class Header extends GetView<Controller> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 5),
+          padding: EdgeInsets.only(top: 5.h),
           child: Text(
             currentDate,
             style: dateTextStyle,
           ),
         ),
-        const SizedBox(
-          height: 30,
+        SizedBox(
+          height: 30.h,
         ),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          height: 80,
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+          height: 80.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset(
                 'assets/weather/$icon.png',
-                width: 80,
-                height: 80,
+                width: 80.w,
+                height: 80.h,
               ),
               const Spacer(),
-              const VerticalDivider(
-                thickness: 2,
+              VerticalDivider(
+                thickness: 1.7.w,
                 color: lightGrey,
                 indent: 20, // empty space to the leading edge of divider.
                 endIndent: 20, // empty space to the trailing edge of the divider.
@@ -66,11 +68,11 @@ class Header extends GetView<Controller> {
             ],
           ),
         ),
-        const SizedBox(
-          height: 30,
+        SizedBox(
+          height: 30.h,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -109,22 +111,22 @@ class InfoIcon extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 60,
-          width: 60,
+          height: 57.w,
+          width: 57.w,
           decoration: BoxDecoration(
             color: lightGrey,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
           ),
           child: Center(
             child: Image.asset(
               icon,
-              width: 35,
-              height: 35,
+              width: 35.w,
+              height: 35.h,
             ),
           ),
         ),
-        const SizedBox(
-          height: 8,
+        SizedBox(
+          height: 8.h,
         ),
         Text(
           value,

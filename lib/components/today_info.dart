@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weatherapp_starter_project/components/hour_info.dart';
-import 'package:weatherapp_starter_project/controllers/controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../components/hour_info.dart';
+import '../controllers/controller.dart';
 
 import '../theme/colors.dart';
 import '../theme/styles.dart';
@@ -25,12 +27,12 @@ class TodayTemretureInfo extends GetView<Controller> {
           'Today',
           style: todayTextStyle,
         ),
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: 20.h,
         ),
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 160,
+          height: 160.h,
           decoration: BoxDecoration(
             color: hourlyInfoContainerColor,
             borderRadius: BorderRadius.circular(15),

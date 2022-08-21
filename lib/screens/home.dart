@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../components/footer.dart';
 import '../components/header.dart';
@@ -40,42 +41,38 @@ class HomeScreen extends StatelessWidget {
             );
           }
 
-
           return controller.isLoadingWeatherData.value
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
               : SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 0),
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 40,
-                          left: 15,
-                          right: 15,
-                        ),
-                        child: Column(
-                          children: const [
-                            Header(),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            TodayTemretureInfo(),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            NextDaysInfo(),
-                            Divider(
-                              height: 50,
-                              thickness: 1,
-                            ),
-                            Footer(),
-                            SizedBox(
-                              height: 30,
-                            ),
-                          ],
-                        ),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        top: 40.h,
+                        left: 15.w,
+                        right: 15.w,
+                      ),
+                      child: Column(
+                        children: [
+                          const Header(),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          const TodayTemretureInfo(),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          const NextDaysInfo(),
+                          Divider(
+                            height: 50.h,
+                            thickness: 1.5.h,
+                          ),
+                          const Footer(),
+                          SizedBox(
+                            height: 50.h,
+                          ),
+                        ],
                       ),
                     ),
                   ),
